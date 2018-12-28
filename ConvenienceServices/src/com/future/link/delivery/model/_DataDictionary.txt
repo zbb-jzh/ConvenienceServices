@@ -1,0 +1,47 @@
+Table: delivery_coupon
+------------+--------------+------+-----+---------+---------
+ Field      | Type         | Null | Key | Default | Remarks 
+------------+--------------+------+-----+---------+---------
+ id         | INT(10)      | NO   | PRI |         |         
+ wxUserId   | BIGINT(19)   | YES  |     |         |         
+ status     | INT(10)      | YES  |     |         | 状态，0未使用，1使用
+ createTime | DATETIME(19) | YES  |     |         |         
+------------+--------------+------+-----+---------+---------
+
+Table: delivery_evaluate
+------------+--------------+------+-----+---------+---------
+ Field      | Type         | Null | Key | Default | Remarks 
+------------+--------------+------+-----+---------+---------
+ id         | BIGINT(19)   | NO   | PRI | 0       |         
+ orderId    | BIGINT(19)   | YES  |     |         | 订单id    
+ starNum    | INT(10)      | YES  |     |         | 星数      
+ content    | VARCHAR(500) | YES  |     |         | 评价内容    
+ createTime | DATETIME(19) | YES  |     |         | 评价时间    
+------------+--------------+------+-----+---------+---------
+
+Table: delivery_send
+----------------+--------------+------+-----+---------+---------
+ Field          | Type         | Null | Key | Default | Remarks 
+----------------+--------------+------+-----+---------+---------
+ id             | BIGINT(19)   | NO   | PRI |         | 主键      
+ name           | VARCHAR(50)  | NO   |     |         | 姓名      
+ phone          | VARCHAR(50)  | NO   |     |         | 电话      
+ address        | VARCHAR(500) | NO   |     |         | 地址      
+ remark         | VARCHAR(200) | YES  |     |         |         
+ createTime     | DATETIME(19) | NO   |     |         |         
+ status         | INT(10)      | NO   |     | 1       | 状态，0删除，1未送，2已送，5已收件，6已寄出,7未收件
+ townId         | BIGINT(19)   | YES  |     |         | 镇id     
+ teamId         | BIGINT(19)   | YES  |     |         | 大队      
+ wxUserId       | BIGINT(19)   | YES  |     |         | 微信用户id  
+ kdyId          | VARCHAR(50)  | YES  |     |         | 快递员id   
+ yfPrice        | DOUBLE(22)   | YES  |     |         |         
+ type           | INT(10)      | YES  |     |         | 1,寄快递；2代送快递
+ expressName    | VARCHAR(500) | YES  |     |         | 快递名称    
+ kdyName        | VARCHAR(100) | YES  |     |         | 快递员姓名   
+ kdyPhone       | VARCHAR(50)  | YES  |     |         | 快递员电话   
+ mailingAddress | VARCHAR(500) | YES  |     |         | 邮寄地址    
+ payStatus      | INT(10)      | YES  |     |         | 0，未支付，1货到付款，2，微信支付，3券支付,
+ expressNo      | VARCHAR(100) | YES  |     |         | 快递单号    
+ evaluateStatus | INT(10)      | YES  |     | 0       | 0未评价，1评价了
+----------------+--------------+------+-----+---------+---------
+
