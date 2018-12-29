@@ -1,0 +1,15 @@
+Table: system_advertising
+--------------+---------------+------+-----+---------+---------
+ Field        | Type          | Null | Key | Default | Remarks 
+--------------+---------------+------+-----+---------+---------
+ id           | BIGINT(19)    | NO   | PRI |         |         
+ name         | VARCHAR(200)  | YES  |     |         | 广告名称    
+ linkedUrl    | VARCHAR(200)  | YES  |     |         | 链接地址    
+ showPosition | INT(10)       | YES  |     |         | 展示位置    
+ sortNum      | INT(10)       | YES  |     |         | 排序值     
+ description  | VARCHAR(500)  | YES  |     |         | 描述      
+ imageUrl     | VARCHAR(1000) | YES  |     |         | 图片地址    
+ status       | INT(10)       | YES  |     |         | 0不启用，1启用
+ createTime   | DATETIME(19)  | YES  |     |         | 创建时间    
+--------------+---------------+------+-----+---------+---------
+

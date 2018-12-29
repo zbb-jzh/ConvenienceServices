@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>生活服务</title>
+        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+        <meta content="telephone=no" name="format-detection"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/nav.js"></script>
+        <script type="text/javascript" src="js/slider.js"></script>
+        <link rel="stylesheet" href="../../frozen/css/frozen.css">
+        <link rel="stylesheet" href="../../demo.css">
+        <link rel="stylesheet" href="../../common/jQuery-ztree/demo.css">
+        <link rel="stylesheet" href="../../common/jQuery-ztree/zTreeStyle.css">
+        <script src="../../frozen/lib/zepto.min.js"></script>
+        <script src="../../frozen/js/frozen.js"></script>
+        <!-- <script src="../../jQuery/jQuery-2.2.0.min.js"></script> -->
+        <script src="../../avalon/avalon.js"></script>
+        <script type="text/javascript" src="../../common/jQuery-ztree/jquery.ztree.core.min.js" > </script>
+		<script type="text/javascript" src="../../common/jQuery-ztree/jquery.ztree.all.min.js" > </script>
+		<script type="text/javascript" src="../../common/tools.js" > </script>
+        <!-- <script src="my.js"></script> -->
+    </head>
+    <body>
+        <!--
+
+         * 17素材vip建站专区模块代码
+         * 详尽信息请看官网：http://www.17sucai.com/pins/vip
+         *
+         * Copyright , 温州易站网络科技有限公司版权所有
+         *
+         * 请尊重原创，未经允许请勿转载。
+         * 在保留版权的前提下可应用于个人或商业用途
+
+        -->
+        <section class="aui-flexView" id="navHead">
+            <header class="aui-navBar aui-navBar-fixed  aui-navBar-bg aui-navBar-fixed" id="nav-wrap">
+                <div class="aui-center" style="margin-left: 0; width:100%">
+                    <div class="aui-recovery-search">
+                        <div class="aui-recovery-search-bg">
+                            <span class="aui-recovery-address">
+                                北京<i class="icon icon-add"></i>
+                            </span>
+                            <span class="aui-recovery-search-list">
+                                <i class="icon icon-search"></i>
+                                <input type="text" placeholder="三室一厅">
+                            </span>
+                            <i class="icon icon-code"></i>
+                        </div>
+                    </div>
+                </div>
+                <a href="javascript:;" class="aui-navBar-item" style="min-width:15%; flex: 0 0 15%">签到
+                </a>
+            </header>
+            <section class="aui-scrollView">
+            	<section class="ui-container">
+					<section id="slider">
+    					<div class="demo-item">
+        				<!--<p class="demo-desc">轮播组件</p>-->
+        					<div class="demo-block">
+            					<div class="ui-slider">
+                					<ul class="ui-slider-content" style="width: 300%">
+                    					<li><span style="background-image:url(https://b2b.img.yt1998.com/20171215/1513302922407.jpg)"></span></li>
+                    					<li><span style="background-image:url(https://b2b.img.yt1998.com/20171215/1513302922407.jpg)"></span></li>
+                    					<li><span style="background-image:url(https://b2b.img.yt1998.com/20171215/1513302922407.jpg)"></span></li>
+                					</ul>
+            					</div>
+        				</div>
+        				<script class="demo-script">
+        				(function (){
+            				var slider = new fz.Scroll('.ui-slider', {
+                				role: 'slider',
+                				indicator: true,
+                				autoplay: true,
+                				interval: 3000
+            				});
+
+            			slider.on('beforeScrollStart', function(fromIndex, toIndex) {
+                			console.log(fromIndex,toIndex)
+            			});
+
+            			slider.on('scrollEnd', function(cruPage) {
+                			console.log(cruPage)
+            			});
+        				})();
+        				</script>
+						</div>
+					</section>
+    			</section>
+                <div class="m-slider m-slider-bos b-line" data-ydui-slider>
+                    <div class="slider-wrapper">
+                        <div class="slider-item">
+                            <div class="aui-palace aui-palace-four clearfix">
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-001.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>全职招聘</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-002.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>兼职</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-003.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>租房</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-004.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>二手房</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-005.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>二手物品</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-006.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>二手车</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-007.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>宠物</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-008.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>家政</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-009.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>本地服务</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-010.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>商务服务</h2>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- <div class="slider-item">
+                            <div class="aui-palace aui-palace-four clearfix">
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-001.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>本地服务</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-002.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>商务服务</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-003.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>商务服务</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-004.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>商务服务</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-005.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>商务服务</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-006.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>商务服务</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-007.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>商务服务</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-008.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>商务服务</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-009.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>商务服务</h2>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="aui-palace-grid">
+                                    <div class="aui-palace-grid-icon">
+                                        <img src="images/icon-fun-010.png" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>商务服务</h2>
+                                    </div>
+                                </a>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="slider-pagination"></div>
+                </div>
+                <div class="aui-flex aui-flex-show aui-flex-show-text">
+                    <div class="aui-flex-box">
+                        <h2>老家生活</h2>
+                        <p>38888个老乡都在看</p>
+                    </div>
+                    <div class="aui-flex-fr aui-flex-go-btn">去看看
+                    </div>
+                </div>
+                <div class="aui-flex aui-flex-show">
+                    <div class="aui-flex-hot">
+                        <img src="images/icon-hot.png" alt="">
+                    </div>
+                    <div class="aui-flex-box">
+                        <ul class="line">
+                            <li>
+                                <a href="javascript:;">安居客-北京楼盘房价-2018北京房价走势-安居客新房</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">定居网汕头讯:截至2018年9月6日 19点57分为止,本网新增房源2494套,更新房源406890套。</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">2018房产楼市行情 将走向“一紧一松”格局_房产资讯-北京房天下</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">中国楼市行情_中国房价未来走势_各地区楼市行情房产资讯大杂烩-咻...</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">楼市走势分析_2018楼市价格走势_楼市行情走势</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">2018买房还是2019买房?今年中国楼市行情怎么样?-闽南网</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">北京育芳园小区房价_每日房产信息发布-中原地产官方资讯平台</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="aui-head-title">
+                    <h2>到家服务</h2>
+                </div>
+                <div class="aui-slide-list">
+                    <ul class="aui-slide-item-list">
+                        <li class="aui-slide-item-item">
+                            <a href="javascript:;" class="aui-link clearfix">
+                                <img src="images/icon-bmu-001.png" alt="">
+                                <h3>
+                                    保洁 <em>促销</em>
+                                </h3>
+                            </a>
+                        </li>
+                        <li class="aui-slide-item-item">
+                            <a href="javascript:;" class="aui-link clearfix">
+                                <img src="images/icon-bmu-002.png" alt="">
+                                <h3>月嫂</h3>
+                            </a>
+                        </li>
+                        <li class="aui-slide-item-item">
+                            <a href="javascript:;" class="aui-link clearfix">
+                                <img src="images/icon-bmu-003.png" alt="">
+                                <h3>保姆</h3>
+                            </a>
+                        </li>
+                        <li class="aui-slide-item-item">
+                            <a href="javascript:;" class="aui-link clearfix">
+                                <img src="images/icon-bmu-001.png" alt="">
+                                <h3>月嫂</h3>
+                            </a>
+                        </li>
+                        <li class="aui-slide-item-item">
+                            <a href="javascript:;" class="aui-link clearfix">
+                                <img src="images/icon-bmu-002.png" alt="">
+                                <h3>月嫂</h3>
+                            </a>
+                        </li>
+                        <li class="aui-slide-item-item">
+                            <a href="javascript:;" class="aui-link clearfix">
+                                <img src="images/icon-bmu-003.png" alt="">
+                                <h3>月嫂</h3>
+                            </a>
+                        </li>
+                        <li class="aui-slide-item-item">
+                            <a href="javascript:;" class="aui-link clearfix">
+                                <img src="images/icon-bmu-001.png" alt="">
+                                <h3>月嫂</h3>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="auo-ad-box">
+                    <img src="images/ad-001.png" alt="">
+                </div>
+                <!-- <div class="aui-so-content aui-flex-show">
+                    <h2 class="aui-so-content-title">便民服务</h2>
+                    <div class="m-slider m-slider-bos b-line" data-ydui-slider>
+                        <div class="slider-wrapper">
+                            <div class="slider-item">
+                                <div class="aui-palace aui-palace-four clearfix">
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-011.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>办证助手</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-012.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>办公模板</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-013.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>医院服务</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-014.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>黄道吉日</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-015.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>旅游度假</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-016.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>酒店预定</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-017.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>手机回收</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-018.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>创业评测</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-019.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>代驾</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-020.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>消费举报</h2>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="slider-item">
+                                <div class="aui-palace aui-palace-four clearfix">
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-011.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>办证助手</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-012.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>办公模板</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-013.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>医院服务</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-014.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>黄道吉日</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-015.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>旅游度假</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-016.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>酒店预定</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-017.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>手机回收</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-018.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>创业评测</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-019.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>代驾</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <img src="images/icon-fun-020.png" alt="">
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>消费举报</h2>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slider-pagination"></div>
+                    </div>
+                </div> -->
+                <div class="aui-so-content">
+                    <h2 class="aui-so-content-title">选择你感兴趣的内容</h2>
+                    <p class="aui-so-content-text">选择兴趣可以更快速找到信息</p>
+                    <div class="aui-flex-interest">
+                        <a href="javascript:;">
+                            找全职工作 <i class="icon icon-ad"></i>
+                        </a>
+                        <a href="javascript:;">
+                            找兼职工作 <i class="icon icon-ad"></i>
+                        </a>
+                        <a href="javascript:;">
+                            租房子 <i class="icon icon-ad"></i>
+                        </a>
+                        <a href="javascript:;">
+                            找二手房子 <i class="icon icon-ad"></i>
+                        </a>
+                        <a href="javascript:;">
+                            找二手车 <i class="icon icon-ad"></i>
+                        </a>
+                        <a href="javascript:;">
+                            找本地服务 <i class="icon icon-ad"></i>
+                        </a>
+                    </div>
+                    <div class="aui-list-box">
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-001.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>大众-捷达 5043款 4.2L 手动舒适型大众-捷达 5043款 4.2L 手动舒适型</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-002.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>奥迪A6L 2018款 30周年年型 30 FSI 风尚型</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-003.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>大众-捷达 5043款 4.2L 手动舒适型大众-捷达 5043款 4.2L 手动舒适型</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-004.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>1大众-捷达 5043款 4.2L 手动舒适型大众-捷达 5043款 4.2L 手动舒适型</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-005.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>大众-捷达 5043款 4.2L 手动舒适型大众-捷达 5043款 4.2L 手动舒适型</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-006.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>大众-捷达 5043款 4.2L 手动舒适型大众-捷达 5043款 4.2L 手动舒适型</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-007.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>业主急售，近期必卖！ 品质小区，新楼环境好，格局方正。</h3>
+                                <p class="aui-flex-box-tag">2018年  |  2室1厅1卫
+                                </p>
+                                <p class="aui-flex-box-vip">890万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-008.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>06年花园小区 有钥匙 温馨小家庭在这里</h3>
+                                <p class="aui-flex-box-tag">2018年  |  1室1厅1卫
+                                </p>
+                                <p class="aui-flex-box-vip">260万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-009.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>珠江骏景南区 经典一居室 视野好 无遮挡 户型方正无浪费</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-010.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>大众-捷达 5043款 4.2L 手动舒适型大众-捷达 5043款 4.2L 手动舒适型</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-002.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>大众-捷达 5043款 4.2L 手动舒适型大众-捷达 5043款 4.2L 手动舒适型</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-001.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>大众-捷达 5043款 4.2L 手动舒适型大众-捷达 5043款 4.2L 手动舒适型</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-002.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>奥迪A6L 2018款 30周年年型 30 FSI 风尚型</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-003.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>大众-捷达 5043款 4.2L 手动舒适型大众-捷达 5043款 4.2L 手动舒适型</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-004.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>1大众-捷达 5043款 4.2L 手动舒适型大众-捷达 5043款 4.2L 手动舒适型</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-005.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>大众-捷达 5043款 4.2L 手动舒适型大众-捷达 5043款 4.2L 手动舒适型</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-006.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>大众-捷达 5043款 4.2L 手动舒适型大众-捷达 5043款 4.2L 手动舒适型</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-007.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>业主急售，近期必卖！ 品质小区，新楼环境好，格局方正。</h3>
+                                <p class="aui-flex-box-tag">2018年  |  2室1厅1卫
+                                </p>
+                                <p class="aui-flex-box-vip">890万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-008.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>06年花园小区 有钥匙 温馨小家庭在这里</h3>
+                                <p class="aui-flex-box-tag">2018年  |  1室1厅1卫
+                                </p>
+                                <p class="aui-flex-box-vip">260万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-009.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>珠江骏景南区 经典一居室 视野好 无遮挡 户型方正无浪费</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-010.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>大众-捷达 5043款 4.2L 手动舒适型大众-捷达 5043款 4.2L 手动舒适型</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-zl-img">
+                                <img src="images/icon-add-002.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h3>大众-捷达 5043款 4.2L 手动舒适型大众-捷达 5043款 4.2L 手动舒适型</h3>
+                                <p class="aui-flex-box-tag">2014年  |  18万公里
+                                </p>
+                                <p class="aui-flex-box-vip">5.00万
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <footer class="aui-tabBar aui-tabBar-fixed">
+                <a href="javascript:;" class="aui-tabBar-item aui-tabBar-active">
+                    <span class="aui-tabBar-icon">
+                        <i class="icon aui-home"></i>
+                    </span>
+                    <span class="aui-tabBar-text">首页</span>
+                </a>
+                <a href="javascript:;" class="aui-tabBar-item ">
+                    <span class="aui-tabBar-icon">
+                        <i class="icon aui-find"></i>
+                    </span>
+                    <span class="aui-tabBar-text">发现</span>
+                </a>
+                <a href="javascript:;" class="aui-tabBar-item">
+                    <span class="aui-left-line"></span>
+                    <span class="aui-right-line"></span>
+                    <span class="aui-top-line"></span>
+                    <span class="aui-tabBar-icon aui-tabBar-icon-top">
+                        <i class="icon aui-mdi"></i>
+                    </span>
+                    <span class="aui-tabBar-text"></span>
+                </a>
+                <a href="javascript:;" class="aui-tabBar-item">
+                    <span class="aui-tabBar-icon">
+                        <i class="icon aui-xcy"></i>
+                    </span>
+                    <span class="aui-tabBar-text">消息</span>
+                </a>
+                <a href="javascript:;" class="aui-tabBar-item">
+                    <span class="aui-tabBar-icon">
+                        <i class="icon aui-me"></i>
+                    </span>
+                    <span class="aui-tabBar-text">我的</span>
+                </a>
+            </footer>
+        </section>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var navHeight = $("#navHead").offset().top;
+                var navFix = $("#nav-wrap");
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > navHeight) {
+                        navFix.addClass("aui-flex");
+                    } else {
+                        navFix.removeClass("aui-flex");
+                    }
+                })
+            });
+
+            $(document).ready(function() {
+                $(".btn-slide").click(function() {
+                    $("#show").slideToggle();
+                });
+            });
+
+            $(function() {
+                $(".line").slideUp();
+            })
+        </script>
+    </body>
+</html>

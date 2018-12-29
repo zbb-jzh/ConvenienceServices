@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/common.css">
+    
+</head>
+<body>
+    <div class="box-body" id="goods" ms-controller="carouselau">
+        <div class="row">
+            <div class="col-md-9 with-sidebar">
+                <form class="form-horizontal" enctype="multipart/form-data">
+                    <!-- <div class="form-group has-feedback" >
+                        <label class="col-md-2 control-label">分类</label>
+                        <div class="col-md-3">
+                            <select class="form-control" id="goodscategory" ms-duplex="model.categoryId" v-on:change="doCategoryChange">
+                                <option v-for="item in sysCategoryList" value="{{item.id}}" >{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div> -->
+                    <div class="form-group has-feedback" ms-class="has-warning: model.name == '' && submited">
+                        <label class="control-label" for="name">
+                            <span ms-if="model.name == '' && submited">请输入名称</span>
+                        </label>
+                        <label class="col-md-2 control-label">名称</label>
+                        <div class="col-md-3">
+                            <input class="form-control" id="name" placeholder="商品名称" ms-duplex="model.name" />
+                        </div>
+                    </div>
+
+                    <div class="form-group" ms-class="has-warning:absoluteUrl.length == 0 && submited">
+                        <label class="control-label" for="upload">
+                            <span ms-if="absoluteUrl.length == 0 && submited">请上传图片</span>
+                        </label>
+                        <label class="col-md-2 control-label">图片</label>
+                        <div class="col-md-8">
+                            <div class="img-show">
+                                <div class="show-iamge" ms-repeat-url="absoluteUrl">
+                                    <img id="upload" alt="" style="width: 100px; height: 100px" ms-attr-src="url"/>
+                                    <span class="cBtn spr db radius45" ms-click="remove($index)">
+                                        <i class="fa fa-minus"></i>
+                                    </span>
+                                </div>
+                                <div class="addtion-top">
+                                    <i class="addition"></i>
+                                    <div id="myupload" class="myload">
+                                        <input  id="fileToUpload"  type="file" name="imgFile" ms-duplex="tempUrl" onchange="upLoadImg()">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <label class="col-md-2 control-label">链接地址</label>
+                        <div class="col-md-3">
+                            <input class="form-control" placeholder="链接地址" ms-duplex="model.linkedUrl"/>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback" ms-class="has-warning:(model.sortNum == '' || model.sortNum <= 0) && submited">
+                        <label class="control-label" for="price">
+                            <span ms-if="model.sortNum == '' && submited">请输入排序值</span>
+                            <span ms-if="model.sortNum <= 0 && submited">排序值应大于零</span>
+                        </label>
+                        <label class="col-md-2 control-label">排序值</label>
+                        <div class="col-md-3">
+                            <input class="form-control" id="sortNum" placeholder="排序值" ms-duplex="model.sortNum"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        
+                        <label class="col-md-2 control-label">显示位置</label>
+                        <div class="col-md-3">
+                            <select  class="form-control" id="unit" ms-duplex="model.showPosition">
+                                <option ms-repeat-item="showPositionList" ms-attr-value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="col-md-2 control-label">是否启用</label>
+                        <div class="col-md-3">
+                            <select  class="form-control" id="unit" ms-duplex="model.status">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">描述</label>
+                        <div class="col-md-10">
+                            <textarea id="goodsDesc" name="content" ms-duplex="model.description" style="width:100%;height:300px;visibility:hidden;"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-8">
+                            <button type="button" ms-click="onAdd()">提交</button>
+                            <button type="button" ms-click="goback">返回</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="common/plugins/avalon/avalon.js"></script>
+<script type="text/javascript" src="common/plugins/jQuery-ztree/jquery.ztree.all.min.js" > </script>
+<script type="text/javascript" src="common/plugins/kindeditor/kindeditor.js" > </script>
+<script type="text/javascript" src="common/plugins/fileupload/ajaxfileupload.js" > </script>
+<script type="text/javascript" src="js/tools.js" > </script>
+<script type="text/javascript" src="system/js/carousel_au.js" > </script>
+</html>

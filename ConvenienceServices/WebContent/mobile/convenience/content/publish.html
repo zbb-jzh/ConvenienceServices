@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <title>发布信息</title>
+		<link rel="stylesheet" href="../../frozen/css/frozen.css">
+        <link rel="stylesheet" href="../../demo.css">
+        <link rel="stylesheet" href="../../common/css/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../../common/css/common.css">
+        <script src="../../frozen/lib/zepto.min.js"></script>
+        <script src="../../frozen/js/frozen.js"></script>
+        <script src="../../jQuery/jQuery-2.2.0.min.js"></script>
+        <script src="../../avalon/avalon.js"></script>
+		<script type="text/javascript" src="../../common/tools.js" > </script>
+		<script type="text/javascript" src="../../common/ajaxfileupload.js" > </script>
+        <script src="js/publish.js"></script>
+    </head>
+	<body ms-controller="publishcontent">
+	
+		<div class="ui-form ui-border-t">
+    		
+        		<div class="ui-form-item ui-form-item-show ui-border-b">
+            		<label>
+               			联系人
+            		</label>
+            		<input type="text" style="line-height: 44px;" placeholder="请输入姓名" ms-duplex="publish.name">
+            			<a href="#" class="ui-icon-close" ms-click="removeInput('name')"  ms-visible="publish.name != ''">
+            			</a>
+        		</div>
+        		<div class="ui-form-item ui-form-item-show ui-border-b">
+            		<label>
+               			 联系电话
+            		</label>
+            		<input type="text" style="line-height: 44px;" placeholder="手机号码" ms-duplex="publish.phone">
+            			<a href="#" class="ui-icon-close" ms-click="removeInput('phone')" ms-visible="publish.phone != ''">
+            			</a>
+        		</div>
+        		<div class="ui-form-item ui-form-item-show ui-border-b">
+            		<label>
+               			 联系地址
+            		</label>
+            		<input type="text" style="line-height: 44px;" placeholder="联系地址" ms-duplex="publish.address">
+            			<a href="#" class="ui-icon-close" ms-click="removeInput('address')" ms-visible="publish.address != ''">
+            			</a>
+        		</div>
+        		
+        		<!-- <div class="ui-form-item ui-form-item-show ui-border-b">
+                        <label style="width:40px;">分类</label>
+                        <div class="ui-select-group" style="margin-left: 50px;">
+                            <div class="ui-select">
+                                <select ms-duplex="address1" style="height: 100%;" ms-change="chagneZhen()">
+                                    <option ms-repeat-item="addressList" ms-attr-value="{{item.id}}">{{item.name}}</option> 
+                                </select>
+                            </div>
+                            <div class="ui-select">
+                                <select ms-duplex="address2" style="height: 100%;" ms-change="chagneCun()">
+                                    <option ms-repeat-item="address1List" ms-attr-value="{{item.id}}">{{item.name}}</option> 
+                                </select>
+                            </div>
+                            <div style="float:left;">
+                            	<input type="text" style="line-height: 44px;padding-left: 0px;width:50px;" placeholder="庄名" ms-duplex="send.address">
+            					<label>庄</label>
+                            </div>
+                            
+                        </div>
+                        
+                    </div> -->
+    			<div class="ui-form-item ui-form-item-textarea  ui-form-item-pure ui-border-b" style="height: 103px;">
+            		<!-- <label>
+               			 内容
+            		</label> -->
+            		<textarea type="text" style="line-height: 44px;" placeholder="内容" ms-duplex="publish.content" ></textarea>
+            			
+        		</div>
+        		<div class="ui-form-item ui-form-item-show ui-border-b" style="height: 100px;">
+            		<!-- <label>
+               			 图片
+            		</label> -->
+            		<div class="col-md-8">
+                            <div class="img-show">
+                                <div class="show-iamge" ms-repeat-url="absoluteUrl">
+                                    <img id="upload" alt="" style="width: 100px; height: 100px" ms-attr-src="url"/>
+                                    <span class="cBtn spr db radius45" ms-click="remove($index)">
+                                        <i class="fa fa-minus"></i>
+                                    </span>
+                                </div>
+                                <div class="addtion-top">
+                                    <i class="addition"></i>
+                                    <div id="myupload" class="myload">
+                                        <input  id="fileToUpload"  type="file" name="imgFile" ms-duplex="tempUrl" onchange="upLoadImg()">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+        		</div>
+        	<div class="ui-btn-wrap" >
+            	<button class="ui-btn-lg ui-btn-primary" style="margin-bottom: 10px;" ms-click="add(0)">
+               	 发布
+            	</button>
+        	</div>
+		</div>
+	
+	</body>
+
+</html>

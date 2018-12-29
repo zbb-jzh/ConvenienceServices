@@ -3,6 +3,7 @@ import com.future.link.base.BaseRouter;
 import com.future.link.consumer.ConsumerRouter;
 import com.future.link.delivery.DeliveryRouter;
 import com.future.link.goods.GoodsRouter;
+import com.future.link.system.SystemRouter;
 import com.future.link.user.UserRouter;
 import com.future.link.wx.WXRouter;
 import com.jfinal.config.Constants;
@@ -37,6 +38,7 @@ public class LinkConfig extends JFinalConfig{
 		me.add(new BaseRouter());
 		me.add(new DeliveryRouter());
 		me.add(new WXRouter());
+		me.add(new SystemRouter());
 	}
 	
 	/**
@@ -95,6 +97,7 @@ public class LinkConfig extends JFinalConfig{
 		com.future.link.goods.model._MappingKit.mapping(arp);
 		com.future.link.base.model._MappingKit.mapping(arp);
 		com.future.link.delivery.model._MappingKit.mapping(arp);
+		com.future.link.system.model._MappingKit.mapping(arp);
 	}
 
 	@Override
