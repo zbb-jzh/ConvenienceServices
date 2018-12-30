@@ -73,4 +73,12 @@ public abstract class BaseCategory<M extends BaseCategory<M>> extends Model<M> i
 		return get("yfPrice");
 	}
 
+	public void setIconUrl(java.lang.String iconUrl) {
+		set("iconUrl", iconUrl);
+	}
+
+	public java.lang.String getIconUrl() {
+		return get("iconUrl");
+	}
+
 }

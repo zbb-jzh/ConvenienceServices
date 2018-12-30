@@ -9,8 +9,12 @@ var vm = avalon.define({
 	submited:false,
 	goodsCategoryList:[],
 	kdyList:[],
-	category:{id:'', name:'', parentId:'',yfPrice:'',kdyId:''},
+	category:{id:'', name:'', parentId:'',iconUrl:''},
 	name:'',
+	absoluteUrl:[],
+	relativeUrl:[],
+	tempUrl:'',
+	imgUrl:'',
 	hasAdd:false,
 	hasDelete:false,
 	hasUpdate:false,
@@ -20,9 +24,17 @@ var vm = avalon.define({
 		if(vm.category.name==""){
 			return;
 		}
-		if(vm.category.yfPrice==""){
-			return;
-		}
+		
+		vm.category.iconUrl = '';
+        for(var i=0; i<vm.relativeUrl.length; i++){
+
+            if(i == vm.relativeUrl.length-1){
+                vm.category.iconUrl = vm.category.iconUrl + vm.relativeUrl[i];
+            }else{
+                vm.category.iconUrl = vm.category.iconUrl + vm.relativeUrl[i] + ",";
+            }
+        }
+        
 		if(vm.category.id){
 			
 			if(vm.category.id == vm.category.parentId){
@@ -42,7 +54,9 @@ var vm = avalon.define({
 			    		vm.doGetParent();
 			    		vm.doGetKdy();
 			    		vm.submited = false;
-			    		vm.category = {id:'', name:'', parentId:'',yfPrice:'',kdyId:''};
+			    		vm.relativeUrl = [];
+			        	vm.absoluteUrl = [];
+			    		vm.category = {id:'', name:'', parentId:'',iconUrl:''};
 	                }else{
 	                	alert(res.data);
 	                }
@@ -66,7 +80,9 @@ var vm = avalon.define({
 			    		vm.doGetParent();
 			    		vm.doGetKdy();
 			    		vm.submited = false;
-			    		vm.category = {id:'', name:'', parentId:'',yfPrice:'',kdyId:''};
+			    		vm.relativeUrl = [];
+			        	vm.absoluteUrl = [];
+			    		vm.category = {id:'', name:'', parentId:'',iconUrl:''};
 	                }else{
 	                	alert(res.data);
 	                }
@@ -91,7 +107,9 @@ var vm = avalon.define({
 		    		vm.initTree();
 		    		vm.doGetParent();
 		    		vm.submited = false;
-		    		vm.category = {id:'', name:'', parentId:'',yfPrice:'',kdyId:''};
+		    		vm.relativeUrl = [];
+		        	vm.absoluteUrl = [];
+		    		vm.category = {id:'', name:'', parentId:'',iconUrl:''};
                 }else{
                 	alert(res.data);
                 }
@@ -103,7 +121,9 @@ var vm = avalon.define({
 	},
 	toAdd:function()
 	{
-		vm.category = {id:'', name:'', parentId:'',yfPrice:'',kdyId:''};
+		vm.relativeUrl = [];
+    	vm.absoluteUrl = [];
+		vm.category = {id:'', name:'', parentId:'',iconUrl:''};
 	},
 	init:function()
 	{
@@ -150,8 +170,16 @@ var vm = avalon.define({
         }
         vm.category.id = treeNode.id;
         vm.category.name = treeNode.name;
-        vm.category.yfPrice = treeNode.yfPrice;
-        vm.category.kdyId = treeNode.kdyId;
+        if(treeNode.iconUrl){
+            vm.relativeUrl = treeNode.iconUrl.split(',');
+        }else{
+        	vm.relativeUrl = [];
+        }
+        if(treeNode.showUrl){
+            vm.absoluteUrl = treeNode.showUrl.split(',');
+        }else{
+        	vm.absoluteUrl = [];
+        }
     },
 	doGetParent:function()
 	{
@@ -196,6 +224,10 @@ var vm = avalon.define({
 		    }
 		});
 	},
+	remove :function (index) {
+        vm.absoluteUrl.splice(index, 1);
+        vm.relativeUrl.splice(index, 1);
+    },
 	doGetKdy:function()
 	{
 		$.ajax({
@@ -229,6 +261,29 @@ console.log(vm.hasDelete);
 if(btns[2].has){
 	vm.hasUpdate = true;
 }
+var upLoadImg = function(){
+    $.ajaxFileUpload({
+        url:'/link/fileupload/uploadImg',
+        secureuri:false,
+        fileElementId:'fileToUpload',
+        dataType:'json',
+        data:{},
+        success:function(data, status){
+            //var obj = jQuery.parseJSON(data);
+            vm.imgUrl = data.absolute;
+            vm.absoluteUrl.push(data.absolute);
+            vm.relativeUrl.push(data.relative);
+            console.log(123);
+        },
+        error:function(data, status, e){
+
+        }
+    });
+    console.log(document.getElementById("fileToUpload").value);
+    $("#fileToUpload").remove();
+    var input = " <input  id=\"fileToUpload\" type=\"file\" name=\"imgFile\" onchange=\"upLoadImg()\" />";
+    $("#myupload").append(input);
+};
 vm.init();
-vm.doGetKdy();
+//vm.doGetKdy();
 avalon.scan();

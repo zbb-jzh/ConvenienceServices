@@ -1,36 +1,57 @@
 
 
 var vm = avalon.define({
-	$id:'carouselau',
-	id : getUrlData('id'),
+	$id:'index',
 	submited:false,
-	model:{id:'',name:'',linkedUrl:'',sortNum:1,description:'',showPosition:1, imageUrl:'', status:1},
+	publish:{id:'',name:'',phone:'',address:'',content:'',firstCategory:'', secCategory:'',imageUrl:''},
 	showPositionList:[{id:1,name:'首页顶部轮播图'}],
 	absoluteUrl:[],
 	relativeUrl:[],
 	tempUrl:'',
 	imgUrl:'',
+	categoryList:[],
+	adList:[],
 	
-	getCarousel:function()
+	getAdList:function(){
+		$.ajax({
+		    url: "../../../carousel/doGetAdList",    //请求的url地址
+		    dataType: "json",   //返回格式为json
+		    data: {position:1},    //参数值
+		    type: "post",   //请求方式
+		    success: function(res) {
+		    	if (res.status == 100) {
+		    		vm.adList = res.data;
+		    		
+		    		for(var i=0; i<vm.adList.length; i++){
+                        if(vm.adList[i].showUrl != undefined){
+                            vm.adList[i].showUrl = vm.adList[i].showUrl.split(',')[0];
+                        }
+                    }
+                }else{
+                	alert(res.data);
+                }
+		    },
+		    error: function() {
+		    	console.log('error');
+		    }
+		});
+	},
+	getCategory:function()
 	{
-		console.log(000122);
-		if(vm.id){
+		
 			$.ajax({
-    		    url: "/link/carousel/doGet",    //请求的url地址
+    		    url: "../../../carousel/doGetParent",    //请求的url地址
     		    dataType: "json",   //返回格式为json
-    		    data: {id:vm.id},    //参数值
+    		    data: {},    //参数值
     		    type: "post",   //请求方式
     		    success: function(res) {
     		    	if (res.status == 100) {
-    		    		vm.model = res.data;
-    		    		if(editor) {
-                            editor.html(vm.model.description);
-                        }
-                        if(vm.model.imageUrl){
-                            vm.relativeUrl = vm.model.imageUrl.split(',');
-                        }
-                        if(vm.model.showUrl){
-                            vm.absoluteUrl = vm.model.showUrl.split(',');
+    		    		vm.categoryList = res.data;
+    		    		
+    		    		for(var i=0; i<vm.categoryList.length; i++){
+                            if(vm.categoryList[i].showUrl != undefined){
+                                vm.categoryList[i].showUrl = vm.categoryList[i].showUrl.split(',')[0];
+                            }
                         }
                     }else{
                     	alert(res.data);
@@ -40,9 +61,6 @@ var vm = avalon.define({
     		    	console.log('error');
     		    }
     		});
-		}else{
-			vm.model = {id:'',name:'',linkedUrl:'',sortNum:1,description:'',showPosition:1, imageUrl:'', status:1};
-		}
 	},
 	onAdd:function()
 	{
@@ -63,7 +81,6 @@ var vm = avalon.define({
         vm.model.description = editor.html();
         
 		if(vm.id){
-			delete vm.model.showUrl;
 			$.ajax({
     		    url: "/link/carousel/doUpdate",    //请求的url地址
     		    dataType: "json",   //返回格式为json
@@ -115,47 +132,6 @@ var vm = avalon.define({
 	}
 	
 });
-
-var editor = KindEditor.create('textarea[name="content"]', {
-    resizeType : 1,
-    uploadJson :'http://127.0.0.1:8080/link/fileupload/uploadImg',
-    urlType : 'absolute',
-    allowFileManager : false,
-    allowPreviewEmoticons : false,
-    allowImageUpload : true,
-    autoHeightMode : true,
-    afterCreate : function() {
-        this.loadPlugin('autoheight');
-    },
-    afterBlur : function() {
-        this.sync();
-    },
-    items : [ 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright',
-        'insertorderedlist', 'insertunorderedlist', '|', 'emoticons', 'link',"image" ]
-});
-
-var upLoadImg = function(){
-    $.ajaxFileUpload({
-        url:'/link/fileupload/uploadImg',
-        secureuri:false,
-        fileElementId:'fileToUpload',
-        dataType:'json',
-        data:{},
-        success:function(data, status){
-            //var obj = jQuery.parseJSON(data);
-            vm.imgUrl = data.absolute;
-            vm.absoluteUrl.push(data.absolute);
-            vm.relativeUrl.push(data.relative);
-            console.log(123);
-        },
-        error:function(data, status, e){
-
-        }
-    });
-    console.log(document.getElementById("fileToUpload").value);
-    $("#fileToUpload").remove();
-    var input = " <input  id=\"fileToUpload\" type=\"file\" name=\"imgFile\" onchange=\"upLoadImg()\" />";
-    $("#myupload").append(input);
-};
-vm.getCarousel();
+vm.getAdList();
+vm.getCategory();
 avalon.scan();

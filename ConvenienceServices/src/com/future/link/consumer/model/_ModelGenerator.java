@@ -6,7 +6,7 @@ public class _ModelGenerator {
 	public static void main(String[] args) {
 		
         String tableHead="consumer";
-        String moduleName="link";
+        String moduleName="ConvenienceServices";
         ModelGeneratorUtil.start(tableHead,moduleName);
     }
 }

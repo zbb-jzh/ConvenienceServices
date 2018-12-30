@@ -12,7 +12,21 @@ import com.future.link.goods.model.base.BaseCategory;
 public class Category extends BaseCategory<Category> {
 	public static final Category dao = new Category();
 	
+	/**
+	 * 把imageUrl转化成绝对地址
+	 */
+	private String showUrl;
+	
 	private List<Category> nodes;
+	
+	public String getShowUrl() {
+		return showUrl;
+	}
+
+	public void setShowUrl(String showUrl) {
+		this.put("showUrl", showUrl);
+		this.showUrl = showUrl;
+	}
 
 	public List<Category> getNodes() {
 		if(this.nodes==null) {

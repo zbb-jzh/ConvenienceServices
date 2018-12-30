@@ -8,14 +8,14 @@
 </head>
 <body >
 <div class="box"  ms-controller="goodscategory">
-    <div ms-click="toAdd()" class="btn-search" style="margin-right: 40px;margin-top:20px;" ms-if="hasAdd"><i></i>添加地址</div>
+    <div ms-click="toAdd()" class="btn-search" style="margin-right: 40px;margin-top:20px;" ms-if="hasAdd"><i></i>添加分类</div>
     <div class="box-body mt60">
         <div class="col-md-2">
-            <div class="ca-list">地址列表</div>
+            <div class="ca-list">分类列表</div>
             <ul id="goodsCateory" class="ztree"></ul>
         </div>
         <div class="col-md-9" style="float: right;">
-            <div class="right-top">编辑地址</div>
+            <div class="right-top">编辑分类</div>
                 <div style="margin-top:20px;margin-bottom: 10px">
                     <form role="form" class="form-horizontal">
                         <!-- --><div class="form-group has-feedback">
@@ -29,15 +29,38 @@
                         </div>
                         <div class="form-group has-feedback" ms-class="has-warning:category.name == '' && submited">
 
-                            <label class="col-md-2 control-label">地址名称</label>
+                            <label class="col-md-2 control-label">分类名称</label>
                             <div class="col-md-6">
-                                <input class="form-control"  placeholder="地址" ms-duplex="category.name" id="name"/>
+                                <input class="form-control"  placeholder="分类名称" ms-duplex="category.name" id="name"/>
                             </div>
                             <label class="control-label" for="name">
-                                <span ms-if="category.name == '' && submited">请输入地址</span>
+                                <span ms-if="category.name == '' && submited">请输入分类名称</span>
                             </label>
                         </div>
-                        <div class="form-group has-feedback" ms-class="has-warning:category.yfPrice == '' && submited">
+                        <div class="form-group" ms-class="has-warning:absoluteUrl.length == 0 && submited">
+                        <label class="control-label" for="upload">
+                            <span ms-if="absoluteUrl.length == 0 && submited">请上传图片</span>
+                        </label>
+                        <label class="col-md-2 control-label">图标</label>
+                        <div class="col-md-8">
+                            <div class="img-show">
+                                <div class="show-iamge" ms-repeat-url="absoluteUrl">
+                                    <img id="upload" alt="" style="width: 100px; height: 100px" ms-attr-src="url"/>
+                                    <span class="cBtn spr db radius45" ms-click="remove($index)">
+                                        <i class="fa fa-minus"></i>
+                                    </span>
+                                </div>
+                                <div class="addtion-top">
+                                    <i class="addition"></i>
+                                    <div id="myupload" class="myload">
+                                        <input  id="fileToUpload"  type="file" name="imgFile" ms-duplex="tempUrl" onchange="upLoadImg()">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                        <!-- <div class="form-group has-feedback" ms-class="has-warning:category.yfPrice == '' && submited">
 
                             <label class="col-md-2 control-label">运费</label>
                             <div class="col-md-6">
@@ -51,11 +74,11 @@
                             <label class="col-md-2 control-label">关联快递员</label>
                             <div class="col-md-6">
                                 <select ms-duplex="category.kdyId" class="form-control select2 " style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                    <!-- <option  value="">无</option> -->
+                                    <option  value="">无</option>
                                      <option ms-repeat-item="kdyList" ms-attr-value="{{item.id}}">{{item.name}}</option> 
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-4" style="margin-left: 170px;">
                             <button ms-click="doAU" type="button" class="btn btn-sure" ms-if="category.id=='' && hasAdd">新增</button>
                             <button ms-click="doAU" type="button" class="btn btn-sure" ms-if="category.id!='' && hasUpdate">修改</button>
@@ -69,6 +92,7 @@
 </body>
 <script type="text/javascript" src="common/plugins/avalon/avalon.js"></script>
 <script type="text/javascript" src="common/plugins/jQuery-ztree/jquery.ztree.all.min.js" > </script>
+<script type="text/javascript" src="common/plugins/fileupload/ajaxfileupload.js" > </script>
 <script type="text/javascript" src="js/tools.js" > </script>
 <script type="text/javascript" src="goods/js/goods_category.js" > </script>
 </html>

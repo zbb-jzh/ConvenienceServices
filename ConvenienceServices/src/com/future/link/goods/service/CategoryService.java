@@ -3,8 +3,10 @@ package com.future.link.goods.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.future.link.base.service.ImageManagerService;
 import com.future.link.common.Result;
 import com.future.link.goods.model.Category;
+import com.future.link.goods.model.Goods;
 import com.future.link.goods.model.GoodsCategoryRelation;
 import com.future.link.utils.AssociationIDUtils;
 import com.future.link.utils.Constant;
@@ -131,6 +133,7 @@ public class CategoryService {
 		List<Category> list = getParent();
 		for(Category model : list)
 		{
+			this.completeShowUrl(model);
 			model.setNodes(getChildrenRecursive(model.getId()));
 		}
 		return new Result(Constant.SUCCESS, list);
@@ -143,6 +146,10 @@ public class CategoryService {
 	public List<Category> getParent()
 	{
 		List<Category> list = Category.dao.find("select * from goods_category where status = ? and parentId is ? order by createTime desc", Constant.UN_DELETE, Constant.ISNULL);
+		for(Category category : list) {
+			this.completeShowUrl(category);
+		}
+		
 		return list;
 	}
 	
@@ -156,6 +163,7 @@ public class CategoryService {
 		List<Category> list = Category.dao.find("select * from goods_category where status = ? and parentId = ? order by createTime desc", Constant.UN_DELETE, pid);
 		if(list!= null && list.size()>0) {
             for(Category tmp: list) {
+            	this.completeShowUrl(tmp);
                 tmp.setNodes(this.getChildrenRecursive(tmp.getId()));
             }
         }
@@ -189,5 +197,18 @@ public class CategoryService {
     public List<Category> searchSec(){
 
         return Category.dao.find("select * from goods_category where parentId is not null and status = ?", Constant.UN_DELETE);
+    }
+    
+    // 图片绝对地址写入Goods对象中
+    private void completeShowUrl(Category category) {
+    	
+    	// 获取相对地址
+        String relUrl = category.getIconUrl();
+        if (StrKit.isBlank(relUrl)) {
+            return;
+        }
+        // 绝对地址
+        String absUrl = ImageManagerService.service.processAbsUrl(relUrl);
+        category.setShowUrl(absUrl);
     }
 }

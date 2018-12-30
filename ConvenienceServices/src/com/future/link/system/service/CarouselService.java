@@ -49,7 +49,9 @@ public class CarouselService {
 	 * @return
 	 */
 	public Result getById(int id) {
-		return new Result(Constant.SUCCESS, Advertising.dao.findById(id));
+		Advertising ad = Advertising.dao.findById(id);
+		this.completeShowUrl(ad);
+		return new Result(Constant.SUCCESS, ad);
 	}
 	
 	/**
@@ -106,4 +108,18 @@ public class CarouselService {
         String absUrl = ImageManagerService.service.processAbsUrl(relUrl);
         ad.setShowUrl(absUrl);
     }
+    
+    /**
+	 * 根据id查询
+	 * @param id
+	 * @return
+	 */
+	public Result getAdList(int position) {
+		List<Advertising> list = Advertising.dao.find("select * from system_advertising where status = 1 and showPosition = ?", position);
+		for(Advertising ad : list) {
+			this.completeShowUrl(ad);
+		}
+		return new Result(Constant.SUCCESS, list);
+	}
+    
 }

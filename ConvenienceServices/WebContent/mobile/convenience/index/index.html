@@ -22,9 +22,9 @@
         <script type="text/javascript" src="../../common/jQuery-ztree/jquery.ztree.core.min.js" > </script>
 		<script type="text/javascript" src="../../common/jQuery-ztree/jquery.ztree.all.min.js" > </script>
 		<script type="text/javascript" src="../../common/tools.js" > </script>
-        <!-- <script src="my.js"></script> -->
+        <script src="js/index.js"></script>
     </head>
-    <body>
+    <body ms-controller="index">
         <!--
 
          * 17素材vip建站专区模块代码
@@ -63,9 +63,9 @@
         					<div class="demo-block">
             					<div class="ui-slider">
                 					<ul class="ui-slider-content" style="width: 300%">
-                    					<li><span style="background-image:url(https://b2b.img.yt1998.com/20171215/1513302922407.jpg)"></span></li>
-                    					<li><span style="background-image:url(https://b2b.img.yt1998.com/20171215/1513302922407.jpg)"></span></li>
-                    					<li><span style="background-image:url(https://b2b.img.yt1998.com/20171215/1513302922407.jpg)"></span></li>
+                    					<li ms-repeat-ad="adList"><span ms-css-background-image="url({{ad.showUrl}})"></span></li>
+                    					<!-- <li><span style="background-image:url(https://b2b.img.yt1998.com/20171215/1513302922407.jpg)"></span></li>
+                    					<li><span style="background-image:url(https://b2b.img.yt1998.com/20171215/1513302922407.jpg)"></span></li> -->
                 					</ul>
             					</div>
         				</div>
@@ -94,15 +94,23 @@
                     <div class="slider-wrapper">
                         <div class="slider-item">
                             <div class="aui-palace aui-palace-four clearfix">
-                                <a href="javascript:;" class="aui-palace-grid">
+                            <a href="javascript:;" class="aui-palace-grid" ms-repeat-category="categoryList">
+                                    <div class="aui-palace-grid-icon" >
+                                        <img ms-attr-src="{{category.showUrl}}" alt="">
+                                    </div>
+                                    <div class="aui-palace-grid-text">
+                                        <h2>{{category.name}}</h2>
+                                    </div>
+                                </a>
+                                <!-- <a href="javascript:;" class="aui-palace-grid">
                                     <div class="aui-palace-grid-icon">
                                         <img src="images/icon-fun-001.png" alt="">
                                     </div>
                                     <div class="aui-palace-grid-text">
                                         <h2>全职招聘</h2>
                                     </div>
-                                </a>
-                                <a href="javascript:;" class="aui-palace-grid">
+                                </a> -->
+                                <!-- <a href="javascript:;" class="aui-palace-grid">
                                     <div class="aui-palace-grid-icon">
                                         <img src="images/icon-fun-002.png" alt="">
                                     </div>
@@ -173,7 +181,7 @@
                                     <div class="aui-palace-grid-text">
                                         <h2>商务服务</h2>
                                     </div>
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                         <!-- <div class="slider-item">

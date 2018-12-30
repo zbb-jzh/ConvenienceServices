@@ -3,6 +3,7 @@ package com.future.link.system.controller;
 import java.io.IOException;
 
 import com.future.link.common.Result;
+import com.future.link.goods.service.CategoryService;
 import com.future.link.goods.service.GoodsService;
 import com.future.link.system.model.Advertising;
 import com.future.link.system.service.CarouselService;
@@ -71,6 +72,23 @@ public class CarouselController extends Controller{
 		String status = this.getPara("status");
 		
 		this.renderJson(new Result(Constant.SUCCESS, CarouselService.service.page(pageNumber, pageSize, name, status)));
+	}
+	
+	/**
+	 * 获取父类
+	 */
+	public void doGetParent()
+	{
+		renderJson(new Result(Constant.SUCCESS, CategoryService.service.getParent()));
+	}
+	
+	/**
+	 * 获取首页顶部轮播图
+	 */
+	public void doGetAdList() {
+		
+		Integer position = this.getParaToInt("position");
+		renderJson(CarouselService.service.getAdList(position));
 	}
 
 }
