@@ -1,0 +1,17 @@
+Table: convenience_publish
+------------+--------------+------+-----+---------+---------
+ Field      | Type         | Null | Key | Default | Remarks 
+------------+--------------+------+-----+---------+---------
+ id         | BIGINT(19)   | NO   | PRI |         |         
+ name       | VARCHAR(100) | YES  |     |         | 联系人     
+ phone      | VARCHAR(20)  | YES  |     |         | 联系电话    
+ address    | VARCHAR(200) | YES  |     |         | 联系地址    
+ content    | VARCHAR(200) | YES  |     |         | 内容      
+ categoryId | BIGINT(19)   | YES  |     |         | 分类id    
+ imageUrl   | VARCHAR(200) | YES  |     |         | 图片地址    
+ createTime | DATETIME(19) | YES  |     |         | 创建时间    
+ status     | INT(10)      | YES  |     |         | 状态      
+ userId     | INT(10)      | YES  |     |         | 用户id    
+ topStatus  | INT(10)      | YES  |     | 0       | 置顶，0未置顶，1置顶
+------------+--------------+------+-----+---------+---------
+

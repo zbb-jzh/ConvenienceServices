@@ -45,27 +45,16 @@
             			</a>
         		</div>
         		
-        		<!-- <div class="ui-form-item ui-form-item-show ui-border-b">
-                        <label style="width:40px;">分类</label>
-                        <div class="ui-select-group" style="margin-left: 50px;">
+        		<div class="ui-form-item ui-form-item-show ui-border-b">
+                        <label>分类</label>
+                        <div class="ui-select-group">
                             <div class="ui-select">
-                                <select ms-duplex="address1" style="height: 100%;" ms-change="chagneZhen()">
-                                    <option ms-repeat-item="addressList" ms-attr-value="{{item.id}}">{{item.name}}</option> 
+                                <select ms-duplex="publish.categoryId" style="height: 100%;">
+                                    <option ms-repeat-item="categoryList" ms-attr-value="{{item.id}}">{{item.name}}</option> 
                                 </select>
                             </div>
-                            <div class="ui-select">
-                                <select ms-duplex="address2" style="height: 100%;" ms-change="chagneCun()">
-                                    <option ms-repeat-item="address1List" ms-attr-value="{{item.id}}">{{item.name}}</option> 
-                                </select>
-                            </div>
-                            <div style="float:left;">
-                            	<input type="text" style="line-height: 44px;padding-left: 0px;width:50px;" placeholder="庄名" ms-duplex="send.address">
-            					<label>庄</label>
-                            </div>
-                            
                         </div>
-                        
-                    </div> -->
+                    </div>
     			<div class="ui-form-item ui-form-item-textarea  ui-form-item-pure ui-border-b" style="height: 103px;">
             		<!-- <label>
                			 内容
@@ -96,7 +85,7 @@
                         </div>
         		</div>
         	<div class="ui-btn-wrap" >
-            	<button class="ui-btn-lg ui-btn-primary" style="margin-bottom: 10px;" ms-click="add(0)">
+            	<button class="ui-btn-lg ui-btn-primary" style="margin-bottom: 10px;" ms-click="onAdd()">
                	 发布
             	</button>
         	</div>

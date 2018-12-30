@@ -11,7 +11,7 @@ var vm = avalon.define({
 	imgUrl:'',
 	categoryList:[],
 	adList:[],
-	
+	publishList:[],
 	getAdList:function(){
 		$.ajax({
 		    url: "../../../carousel/doGetAdList",    //请求的url地址
@@ -62,76 +62,34 @@ var vm = avalon.define({
     		    }
     		});
 	},
-	onAdd:function()
-	{
-		vm.submited = true;
-		
-		if(vm.model.name == '' || vm.absoluteUrl.length == 0 || vm.model.sortNum == '' || vm.model.sortNum <= 0 ){
-			return;
-		}
-		vm.model.imageUrl = '';
-        for(var i=0; i<vm.relativeUrl.length; i++){
-
-            if(i == vm.relativeUrl.length-1){
-                vm.model.imageUrl = vm.model.imageUrl + vm.relativeUrl[i];
-            }else{
-                vm.model.imageUrl = vm.model.imageUrl + vm.relativeUrl[i] + ",";
-            }
-        }
-        vm.model.description = editor.html();
-        
-		if(vm.id){
-			$.ajax({
-    		    url: "/link/carousel/doUpdate",    //请求的url地址
-    		    dataType: "json",   //返回格式为json
-    		    data: param({advertising: vm.model}),    //参数值
-    		    type: "post",   //请求方式
-    		    success: function(res) {
-    		    	if (res.status == 100) {
-    		    		vm.submited = false;
-    		    		window.location.href = '#/carousel/list';
-                    }else{
-                    	alert(res.data);
+	searchPublish:function(pageNumber, pageSize){
+		$.ajax({
+		    url: "../../../publish/doPage",    //请求的url地址
+		    dataType: "json",   //返回格式为json
+		    data: {pageNumber: pageNumber, pageSize: pageSize, content:'',categoryId:''},    //参数值
+		    type: "post",   //请求方式
+		    success: function(res) {
+		    	if (res.status == 100) {
+		    		vm.publishList = res.data.list;
+		    		for(var i=0; i<vm.publishList.length; i++){
+                        if(vm.publishList[i].showUrl != undefined){
+                            vm.publishList[i].showUrl = vm.publishList[i].showUrl.split(',')[0];
+                        }
                     }
-    		    },
-    		    error: function() {
-    		    	console.log('error');
-    		    }
-    		});
-		}else{
-			$.ajax({
-    		    url: "/link/carousel/doAdd",    //请求的url地址
-    		    dataType: "json",   //返回格式为json
-    		    data: param({advertising: vm.model}),    //参数值
-    		    type: "post",   //请求方式
-    		    success: function(res) {
-    		    	if (res.status == 100) {
-    		    		vm.submited = false;
-    		    		window.location.href = '#/carousel/list';
-                    }else{
-                    	alert(res.data);
-                    }
-    		    },
-    		    error: function() {
-    		    	console.log('error');
-    		    }
-    		});
-		}
+		    		
+                }else{
+                	alert(res.data);
+                }
+		    },
+		    error: function() {
+		    	console.log('error');
+		    }
+		});
 	},
-	remove :function (index) {
-        vm.absoluteUrl.splice(index, 1);
-        vm.relativeUrl.splice(index, 1);
-    },
-	goback:function()
-	{
-		window.location.href = '#/carousel/list';
-	},
-	init:function()
-	{
-		
-	}
 	
 });
 vm.getAdList();
 vm.getCategory();
+
+//vm.searchPublish(1, 10);
 avalon.scan();
