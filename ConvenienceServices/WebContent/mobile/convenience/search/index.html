@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>新闻发现页面</title>
+        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+        <meta content="telephone=no" name="format-detection"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <script src="option/mescroll.js" type="text/javascript" charset="utf-8"></script>
+		<script src="option/mescroll-option.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/nav.js"></script>
+        <script type="text/javascript" src="js/slider.js"></script>
+        <!-- <link rel="stylesheet" href="../../frozen/css/frozen.css"> -->
+        <!-- <link rel="stylesheet" href="../../demo.css"> -->
+        <!-- <link rel="stylesheet" href="../../common/jQuery-ztree/demo.css">
+        <link rel="stylesheet" href="../../common/jQuery-ztree/zTreeStyle.css"> -->
+        <script src="../../frozen/lib/zepto.min.js"></script>
+        <script src="../../frozen/js/frozen.js"></script>
+        <!-- <script src="../../jQuery/jQuery-2.2.0.min.js"></script> -->
+        <script src="../../avalon/avalon.js"></script>
+        <!-- <script type="text/javascript" src="../../common/jQuery-ztree/jquery.ztree.core.min.js" > </script>
+		<script type="text/javascript" src="../../common/jQuery-ztree/jquery.ztree.all.min.js" > </script> -->
+		<script type="text/javascript" src="../../common/tools.js" > </script>
+		
+        <script src="js/search.js"></script>
+        <link rel="stylesheet" href="option/mescroll.css">
+		<link rel="stylesheet" href="option/mescroll-option.css">
+        <!-- <script type="text/javascript" src="js/tab.js"></script> -->
+        <style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				-webkit-touch-callout:none;
+				-webkit-user-select:none;
+				-webkit-tap-highlight-color:transparent;
+			}
+			body{background-color: white}
+			ul{list-style-type: none}
+			img{width: 100%;vertical-align: bottom;}
+			
+			/*模拟的标题,底部*/
+			.header{
+				z-index: 9990;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 44px;
+				border-bottom: 1px solid #eee;
+				background-image: url(img/header.jpg);
+				background-size: contain;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-color: white;
+			}
+			.footer{
+				z-index: 9990;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 50px;
+				border-top: 1px solid #eee;
+				background-image: url(img/footer.jpg);
+				background-size: contain;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-color: #F8F8F8;
+			}
+			
+			/*列表*/
+			.mescroll{
+				position: fixed;
+				top: 44px;
+				bottom: 51px;
+				height: auto;
+			}
+			/*回到顶部按钮*/
+			.mescroll-totop {
+				bottom: 70px;
+			}
+			
+			/*下拉刷新回调的提示*/
+			.download-tip{
+				z-index: 9900;
+				position: fixed;
+				top: 10px;
+				left: 0;
+				width: 100%;
+				height: 30px;
+				line-height: 30px;
+				font-size: 12px;
+				text-align: center;
+				background-color: rgba(255,130,1,.7);
+				color: white;
+				-webkit-transition: top 300ms;
+				transition: top 300ms;
+			}
+			
+			/*展示上拉加载的数据列表*/
+			.news-list li{
+				padding: 16px;
+				border-top: 1px solid #eee;
+				border-bottom: 12px solid #eee;
+			}
+			.news-list .new-content{
+				font-size: 14px;
+				margin-top: 6px;
+				margin-left: 8px;
+				color: #666;
+			}
+		</style>
+    </head>
+    <body ms-controller="search">
+
+        <section class="aui-flexView ">
+            <header class="aui-navBar aui-navBar-fixed b-line">
+                 <!-- <a href="javascript:;" class="aui-navBar-item">
+                    <i class="icon "></i>
+                </a> -->
+                <div class="aui-center aui-navBar-search">
+                    <!-- <span class="aui-center-title">发现</span> -->
+                    <input type="text" placeholder="请输入您想查找的">
+                </div>
+                <a href="javascript:;" class="aui-navBar-item">
+                    <span class="aui-cancel">
+                        <i class="">搜索</i>
+                    </span>
+                </a>
+                <!-- <div class="aui-navBar-search">
+                    <input type="text" placeholder="请输入您想查找的应用">
+                    <span class="aui-input-search">
+                        <i class="icon icon-search"></i>
+                    </span>
+                </div>
+                <div class="aui-navBar-bg"></div> -->
+            </header>
+            <section class="aui-scrollView aui-tab mescroll" data-ydui-tab id="mescroll">
+                <div class="aui-form-search b-line">
+                    <div class="tab-nav-over">
+                        <ul class="tab-nav">
+                            <li class="tab-nav-item " ms-class="tab-active:item.isSelected" ms-repeat-item="categoryList">
+                                <a href="javascript:;">
+                                    <span>{{item.name}}</span>
+                                </a>
+                            </li>
+                            <!-- <li class="tab-nav-item ">
+                                <a href="javascript:;">
+                                    <span>新闻</span>
+                                </a>
+                            </li>
+                            <li class="tab-nav-item">
+                                <a href="javascript:;">
+                                    <span>视频</span>
+                                </a>
+                            </li>
+                            <li class="tab-nav-item">
+                                <a href="javascript:;">
+                                    <span>文艺</span>
+                                </a>
+                            </li>
+                            <li class="tab-nav-item">
+                                <a href="javascript:;">
+                                    <span>商业</span>
+                                </a>
+                            </li>
+                            <li class="tab-nav-item">
+                                <a href="javascript:;">
+                                    <span>科技</span>
+                                </a>
+                            </li>
+                            <li class="tab-nav-item">
+                                <a href="javascript:;">
+                                    <span>时尚</span>
+                                </a>
+                            </li>
+                            <li class="tab-nav-item">
+                                <a href="javascript:;">
+                                    <span>教育</span>
+                                </a>
+                            </li>
+                            <li class="tab-nav-item">
+                                <a href="javascript:;">
+                                    <span>汽车</span>
+                                </a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tab-panel">
+                    <div class="tab-panel-item tab-active news-list" id="newsList">
+                       <!-- <a href="javascript:;" class="aui-news-item b-line">
+                           <h2>让世界听到你的故事</h2>
+                           <p>今年6月，博雅小学堂创立了第一个中国第一个少年知识渊博演讲大会"博雅说的少年"、中国崭新新一代再这里向世界讲述了我们做过的</p>
+                           <div class="aui-news-page">
+                               <span>
+                                   <img src="images/ad-001.png" alt="">
+                               </span>
+                               <span>
+                                   <img src="images/ad-002.png" alt="">
+                               </span>
+                               <span>
+                                   <img src="images/ad-003.png" alt="">
+                               </span>
+                           </div>
+                           <div class="aui-flex">
+                               <div class="aui-flex-user">
+                                   <img src="images/user-001.png" alt="">
+                               </div>
+                               <div class="aui-flex-box">
+                                   <p>南方新闻周刊</p>
+                               </div>
+                           </div>
+                       </a>
+                       <a href="javascript:;" class="aui-news-item b-line">
+                           <h2>中美外交安全对话9日在美举行</h2>
+                           <p>中国外交部发言人华春莹6日下午宣布，经双方商定，第二轮中美外交安全对话将于11月9日在美国华盛顿举行。中国外交部发言人华春莹6日下午宣布，经双方商定，第二轮中美外交安全对话将于11月9日在美国华盛顿举行。</p>
+                           <div class="aui-news-page">
+                               <span>
+                                   <img src="images/ad-004.png" alt="">
+                               </span>
+                               <span>
+                                   <img src="images/ad-005.png" alt="">
+                               </span>
+                               <span>
+                                   <img src="images/ad-003.png" alt="">
+                               </span>
+                           </div>
+                           <div class="aui-flex">
+                               <div class="aui-flex-user">
+                                   <img src="images/user-001.png" alt="">
+                               </div>
+                               <div class="aui-flex-box">
+                                   <p>南方新闻周刊</p>
+                               </div>
+                           </div>
+                       </a>
+                       <a href="javascript:;" class="aui-news-item b-line">
+                           <h2>让世界听到你的故事</h2>
+                           <p>今年6月，博雅小学堂创立了第一个中国第一个少年知识渊博演讲大会"博雅说的少年"、中国崭新新一代再这里向世界讲述了我们做过的</p>
+                           <div class="aui-news-page">
+                               <span>
+                                   <img src="images/ad-001.png" alt="">
+                               </span>
+                               <span>
+                                   <img src="images/ad-002.png" alt="">
+                               </span>
+                               <span>
+                                   <img src="images/ad-003.png" alt="">
+                               </span>
+                           </div>
+                           <div class="aui-flex">
+                               <div class="aui-flex-user">
+                                   <img src="images/user-001.png" alt="">
+                               </div>
+                               <div class="aui-flex-box">
+                                   <p>南方新闻周刊</p>
+                               </div>
+                           </div>
+                       </a> -->
+                    </div>
+                    <!-- <div class="tab-panel-item ">
+                        <a href="javascript:;" class="aui-news-item b-line">
+                            <h2>让世界听到你的故事</h2>
+                            <p>今年6月，博雅小学堂创立了第一个中国第一个少年知识渊博演讲大会"博雅说的少年"、中国崭新新一代再这里向世界讲述了我们做过的</p>
+                            <div class="aui-news-page">
+                               <span>
+                                   <img src="images/ad-001.png" alt="">
+                               </span>
+                                <span>
+                                   <img src="images/ad-002.png" alt="">
+                               </span>
+                                <span>
+                                   <img src="images/ad-003.png" alt="">
+                               </span>
+                            </div>
+                            <div class="aui-flex">
+                                <div class="aui-flex-user">
+                                    <img src="images/user-001.png" alt="">
+                                </div>
+                                <div class="aui-flex-box">
+                                    <p>南方新闻周刊</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tab-panel-item">
+                        <a href="javascript:;" class="aui-news-item b-line">
+                            <h2>让世界听到你的故事</h2>
+                            <p>今年6月，博雅小学堂创立了第一个中国第一个少年知识渊博演讲大会"博雅说的少年"、中国崭新新一代再这里向世界讲述了我们做过的</p>
+                            <div class="aui-news-page">
+                               <span>
+                                   <img src="images/ad-001.png" alt="">
+                               </span>
+                                <span>
+                                   <img src="images/ad-002.png" alt="">
+                               </span>
+                                <span>
+                                   <img src="images/ad-003.png" alt="">
+                               </span>
+                            </div>
+                            <div class="aui-flex">
+                                <div class="aui-flex-user">
+                                    <img src="images/user-001.png" alt="">
+                                </div>
+                                <div class="aui-flex-box">
+                                    <p>南方新闻周刊</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tab-panel-item">
+                        <a href="javascript:;" class="aui-news-item b-line">
+                            <h2>让世界听到你的故事</h2>
+                            <p>今年6月，博雅小学堂创立了第一个中国第一个少年知识渊博演讲大会"博雅说的少年"、中国崭新新一代再这里向世界讲述了我们做过的</p>
+                            <div class="aui-news-page">
+                               <span>
+                                   <img src="images/ad-001.png" alt="">
+                               </span>
+                                <span>
+                                   <img src="images/ad-002.png" alt="">
+                               </span>
+                                <span>
+                                   <img src="images/ad-003.png" alt="">
+                               </span>
+                            </div>
+                            <div class="aui-flex">
+                                <div class="aui-flex-user">
+                                    <img src="images/user-001.png" alt="">
+                                </div>
+                                <div class="aui-flex-box">
+                                    <p>南方新闻周刊</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tab-panel-item">
+                        <a href="javascript:;" class="aui-news-item b-line">
+                            <h2>让世界听到你的故事</h2>
+                            <p>今年6月，博雅小学堂创立了第一个中国第一个少年知识渊博演讲大会"博雅说的少年"、中国崭新新一代再这里向世界讲述了我们做过的</p>
+                            <div class="aui-news-page">
+                               <span>
+                                   <img src="images/ad-001.png" alt="">
+                               </span>
+                                <span>
+                                   <img src="images/ad-002.png" alt="">
+                               </span>
+                                <span>
+                                   <img src="images/ad-003.png" alt="">
+                               </span>
+                            </div>
+                            <div class="aui-flex">
+                                <div class="aui-flex-user">
+                                    <img src="images/user-001.png" alt="">
+                                </div>
+                                <div class="aui-flex-box">
+                                    <p>南方新闻周刊</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tab-panel-item">
+                        <a href="javascript:;" class="aui-news-item b-line">
+                            <h2>让世界听到你的故事</h2>
+                            <p>今年6月，博雅小学堂创立了第一个中国第一个少年知识渊博演讲大会"博雅说的少年"、中国崭新新一代再这里向世界讲述了我们做过的</p>
+                            <div class="aui-news-page">
+                               <span>
+                                   <img src="images/ad-001.png" alt="">
+                               </span>
+                                <span>
+                                   <img src="images/ad-002.png" alt="">
+                               </span>
+                                <span>
+                                   <img src="images/ad-003.png" alt="">
+                               </span>
+                            </div>
+                            <div class="aui-flex">
+                                <div class="aui-flex-user">
+                                    <img src="images/user-001.png" alt="">
+                                </div>
+                                <div class="aui-flex-box">
+                                    <p>南方新闻周刊</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tab-panel-item">
+                        <a href="javascript:;" class="aui-news-item b-line">
+                            <h2>让世界听到你的故事</h2>
+                            <p>今年6月，博雅小学堂创立了第一个中国第一个少年知识渊博演讲大会"博雅说的少年"、中国崭新新一代再这里向世界讲述了我们做过的</p>
+                            <div class="aui-news-page">
+                               <span>
+                                   <img src="images/ad-001.png" alt="">
+                               </span>
+                                <span>
+                                   <img src="images/ad-002.png" alt="">
+                               </span>
+                                <span>
+                                   <img src="images/ad-003.png" alt="">
+                               </span>
+                            </div>
+                            <div class="aui-flex">
+                                <div class="aui-flex-user">
+                                    <img src="images/user-001.png" alt="">
+                                </div>
+                                <div class="aui-flex-box">
+                                    <p>南方新闻周刊</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tab-panel-item">
+                        <a href="javascript:;" class="aui-news-item b-line">
+                            <h2>让世界听到你的故事</h2>
+                            <p>今年6月，博雅小学堂创立了第一个中国第一个少年知识渊博演讲大会"博雅说的少年"、中国崭新新一代再这里向世界讲述了我们做过的</p>
+                            <div class="aui-news-page">
+                               <span>
+                                   <img src="images/ad-001.png" alt="">
+                               </span>
+                                <span>
+                                   <img src="images/ad-002.png" alt="">
+                               </span>
+                                <span>
+                                   <img src="images/ad-003.png" alt="">
+                               </span>
+                            </div>
+                            <div class="aui-flex">
+                                <div class="aui-flex-user">
+                                    <img src="images/user-001.png" alt="">
+                                </div>
+                                <div class="aui-flex-box">
+                                    <p>南方新闻周刊</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tab-panel-item">
+                        <a href="javascript:;" class="aui-news-item b-line">
+                            <h2>让世界听到你的故事</h2>
+                            <p>今年6月，博雅小学堂创立了第一个中国第一个少年知识渊博演讲大会"博雅说的少年"、中国崭新新一代再这里向世界讲述了我们做过的</p>
+                            <div class="aui-news-page">
+                               <span>
+                                   <img src="images/ad-001.png" alt="">
+                               </span>
+                                <span>
+                                   <img src="images/ad-002.png" alt="">
+                               </span>
+                                <span>
+                                   <img src="images/ad-003.png" alt="">
+                               </span>
+                            </div>
+                            <div class="aui-flex">
+                                <div class="aui-flex-user">
+                                    <img src="images/user-001.png" alt="">
+                                </div>
+                                <div class="aui-flex-box">
+                                    <p>南方新闻周刊</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div> -->
+
+                </div>
+
+            </section>
+            <footer class="aui-tabBar aui-tabBar-fixed">
+                <a href="javascript:;" class="aui-tabBar-item ">
+                    <span class="aui-tabBar-icon">
+                        <i class="icon aui-home"></i>
+                    </span>
+                    <span class="aui-tabBar-text">首页</span>
+                </a>
+                <a href="javascript:;" class="aui-tabBar-item aui-tabBar-active">
+                    <span class="aui-tabBar-icon">
+                        <i class="icon aui-find"></i>
+                    </span>
+                    <span class="aui-tabBar-text">发现</span>
+                </a>
+                <a href="javascript:;" class="aui-tabBar-item">
+                    <span class="aui-left-line"></span>
+                    <span class="aui-right-line"></span>
+                    <span class="aui-top-line"></span>
+                    <span class="aui-tabBar-icon aui-tabBar-icon-top">
+                        <i class="icon aui-mdi"></i>
+                    </span>
+                    <span class="aui-tabBar-text"></span>
+                </a>
+                <a href="javascript:;" class="aui-tabBar-item">
+                    <span class="aui-tabBar-icon">
+                        <i class="icon aui-xcy"></i>
+                    </span>
+                    <span class="aui-tabBar-text">消息</span>
+                </a>
+                <a href="javascript:;" class="aui-tabBar-item">
+                    <span class="aui-tabBar-icon">
+                        <i class="icon aui-me"></i>
+                    </span>
+                    <span class="aui-tabBar-text">我的</span>
+                </a>
+            </footer>
+        </section>
+	<script type="text/javascript" charset="utf-8">
+		$(function(){
+			//创建MeScroll对象
+			var mescroll = initMeScroll("mescroll", {
+				down:{
+					auto:false,//是否在初始化完毕之后自动执行下拉回调callback; 默认true
+					callback: downCallback, //下拉刷新的回调
+				},
+				up: {
+					auto:true,//初始化完毕,是否自动触发上拉加载的回调
+					isBoth: true, //上拉加载时,如果滑动到列表顶部是否可以同时触发下拉刷新;默认false,两者不可同时触发; 这里为了演示改为true,不必等列表加载完毕才可下拉;
+					callback: upCallback, //上拉加载的回调
+				}
+			});
+			
+			/*下拉刷新的回调 */
+			function downCallback(){
+				//加载轮播数据..
+				//...
+				//加载列表数据
+				getListDataFromNet(0, 1, function(data){
+					//联网成功的回调,隐藏下拉刷新的状态
+					mescroll.endSuccess();
+					//设置列表数据
+					setListData(data, false);
+					//显示提示
+					$("#downloadTip").css("top","44px");
+					setTimeout(function () {
+						$("#downloadTip").css("top","10px");
+					},2000);
+				}, function(){
+					//联网失败的回调,隐藏下拉刷新的状态
+	                mescroll.endErr();
+				});
+			}
+			
+			/*上拉加载的回调 page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+			function upCallback(page){
+				//联网加载数据
+				console.log("page.num="+page.num);
+				getListDataFromNet(page.num, page.size, function(data){
+					//联网成功的回调,隐藏上拉加载的状态
+					mescroll.endSuccess(data.length);//传参:数据的总数; mescroll会自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+					//设置列表数据
+					setListData(data, true);
+				}, function(){
+					//联网失败的回调,隐藏上拉加载的状态
+	                mescroll.endErr();
+				});
+			}
+			
+			/*设置列表数据*/
+			function setListData(data, isAppend) {
+				var listDom=document.getElementById("newsList");
+				for (var i = 0; i < data.length; i++) {
+					var newObj=data[i];
+					
+					
+				
+                        var str = '<a href="javascript:;" class="aui-news-item b-line">';
+                        str += '<h2>' + newObj.title +'</h2>';
+                        str += '<p>' + newObj.content +'</p>';
+                        str += '<div class="aui-news-page">';
+                         for(var j=0; j<newObj.showUrl.length; j++){
+                        	 str += '<span>';
+                             	str += '<img src="' +newObj.showUrl[j] +'" alt="">';
+                         	str += '</span>';
+                         }
+                        str += '</div>';
+                        str += '<div class="aui-flex">';
+                        str += '<div class="aui-flex-user">';
+                        str += '<img src="' + newObj.userName +'" alt="">';
+                        str += '  </div>';
+                        str += '<div class="aui-flex-box">';
+                        str += '<p>'+ newObj.headUrl +'</p>';
+                        str += '   </div>';
+                        str += '</div>';
+                        str += '</a>';
+					
+					if (isAppend) {
+						$('#newsList').append(str);//加在列表的后面,上拉加载
+					} else{
+						listDom.insertBefore(liDom, listDom.firstChild);//加在列表的前面,下拉刷新
+					}
+				}
+			}
+			
+			/*联网加载列表数据*/
+			var downIndex=0;
+			function getListDataFromNet(pageNum,pageSize,successCallback,errorCallback) {
+				
+				$.ajax({
+				    url: "../../../publish/doPage",    //请求的url地址
+				    dataType: "json",   //返回格式为json
+				    data: {pageNumber: pageNum, pageSize: pageSize, content:'',categoryId:''},    //参数值
+				    type: "post",   //请求方式
+				    success: function(res) {
+				    	if (res.status == 100) {
+				    		var publishList = res.data.list;
+				    		for(var i=0; i<publishList.length; i++){
+		                        if(publishList[i].showUrl != undefined){
+		                            publishList[i].showUrl = publishList[i].showUrl.split(',');
+		                        }
+		                    }
+				    		
+				    		try{
+			                	//联网成功的回调
+			                	successCallback&&successCallback(publishList);
+		                	}catch(e){
+		                		//联网失败的回调
+		                		errorCallback&&errorCallback();
+		                	}
+				    		
+		                }else{
+		                	alert(res.data);
+		                }
+				    },
+				    error: function() {
+				    	console.log('error');
+				    }
+				});
+				
+				//延时一秒,模拟联网
+                /* setTimeout(function () {
+                	try{
+                		var newArr=[];
+	                	if(pageNum==0){
+	                		//此处模拟下拉刷新返回的数据
+	                		downIndex++;
+	                		var newObj={title:"【新增微博"+downIndex+"】 新增微博", content:"新增微博的内容<br/>新增微博的内容"};
+	                		newArr.push(newObj);
+	                	}else{
+	                		//此处模拟上拉加载返回的数据
+	                		for (var i = 0; i < pageSize; i++) {
+	                			var upIndex=(pageNum-1)*pageSize+i+1;
+	                			var newObj={title:"【微博"+upIndex+"】 标题标题标题标题标题标题", content:"内容内容内容内容内容内容内容内容内容内容"};
+	                			newArr.push(newObj);
+	                		}
+	                	}
+	                	//联网成功的回调
+	                	successCallback&&successCallback(newArr);
+                	}catch(e){
+                		//联网失败的回调
+                		errorCallback&&errorCallback();
+                	}
+                },2000) */
+			}
+			
+			//禁止PC浏览器拖拽图片,避免与下拉刷新冲突;如果仅在移动端使用,可删除此代码
+			document.ondragstart=function() {return false;}
+		});
+	</script>
+    </body>
+</html>

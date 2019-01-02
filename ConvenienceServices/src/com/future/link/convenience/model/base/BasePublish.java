@@ -97,4 +97,28 @@ public abstract class BasePublish<M extends BasePublish<M>> extends Model<M> imp
 		return get("topStatus");
 	}
 
+	public void setTitle(java.lang.String title) {
+		set("title", title);
+	}
+
+	public java.lang.String getTitle() {
+		return get("title");
+	}
+
+	public void setUserName(java.lang.String userName) {
+		set("userName", userName);
+	}
+
+	public java.lang.String getUserName() {
+		return get("userName");
+	}
+
+	public void setHeadUrl(java.lang.String headUrl) {
+		set("headUrl", headUrl);
+	}
+
+	public java.lang.String getHeadUrl() {
+		return get("headUrl");
+	}
+
 }
