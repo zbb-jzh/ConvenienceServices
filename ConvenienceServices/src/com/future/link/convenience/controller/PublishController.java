@@ -1,5 +1,7 @@
 package com.future.link.convenience.controller;
 
+import java.io.UnsupportedEncodingException;
+
 import com.future.link.common.Result;
 import com.future.link.convenience.model.Publish;
 import com.future.link.convenience.service.PublishService;
@@ -38,8 +40,9 @@ public class PublishController extends Controller{
 	
 	/**
 	 * 分页查询
+	 * @throws UnsupportedEncodingException 
 	 */
-	public void doPage() {
+	public void doPage() throws UnsupportedEncodingException {
 		
 		int pageNumber = this.getParaToInt("pageNumber");
         int pageSize = this.getParaToInt("pageSize");

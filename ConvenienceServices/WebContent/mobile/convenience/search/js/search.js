@@ -11,7 +11,74 @@ var vm = avalon.define({
 	imgUrl:'',
 	categoryList:[],
 	publishList:[],
-	
+	content:'',
+	search:function(id){
+		$.ajax({
+		    url: "../../../publish/doPage",    //请求的url地址
+		    dataType: "json",   //返回格式为json
+		    data: {pageNumber: 1, pageSize: 10, content:vm.content,categoryId:id},    //参数值
+		    type: "post",   //请求方式
+		    success: function(res) {
+		    	if (res.status == 100) {
+		    		var publishList = res.data.list;
+		    		for(var i=0; i<publishList.length; i++){
+                        if(publishList[i].showUrl != undefined){
+                            publishList[i].showUrl = publishList[i].showUrl.split(',');
+                        }
+                    }
+		    		vm.setListData(publishList, true);
+		    		
+		    		
+                }else{
+                	alert(res.data);
+                }
+		    },
+		    error: function() {
+		    	console.log('error');
+		    }
+		});
+	},
+	setListData :function (data, isAppend) {
+		$('#newsList').html('');
+		var listDom=document.getElementById("newsList");
+		for (var i = 0; i < data.length; i++) {
+			var newObj=data[i];
+			
+			
+		
+                var str = '<a href="javascript:;" class="aui-news-item b-line">';
+                str += '<h2>' + newObj.title +'</h2>';
+                str += '<p>' + newObj.content +'</p>';
+                str += '<div class="aui-news-page">';
+                 for(var j=0; j<newObj.showUrl.length; j++){
+                	 str += '<span>';
+                     	str += '<img src="' +newObj.showUrl[j] +'" alt="">';
+                 	str += '</span>';
+                 }
+                str += '</div>';
+                str += '<div class="aui-flex">';
+                str += '<div class="aui-flex-user">';
+                str += '<img src="' + newObj.headUrl +'" alt="">';
+                str += '  </div>';
+                str += '<div class="aui-flex-box">';
+                str += '<span>'+ newObj.userName +'</span>';
+                str += '   </div>';
+                str += '<div class="aui-flex-box">';
+                str += '<button> <i class="icon icon-up"></i>781</button>';
+                str += '<button> <i class="icon icon-do"></i>719</button>';
+                str += '</div>';
+                str += '<div class="aui-card-info aui-card-info-t">';
+                str += '<span>';
+                str += '<i class="icon icon-plu"></i>198</span>';
+                str += '<span><i class="icon icon-zfa"></i></span>';
+                str += '</div>';
+                str += '</div>';
+                str += '</a>';
+                
+				$('#newsList').append(str);//加在列表的后面,上拉加载
+			
+		}
+	},
 	getCategory:function()
 	{
 		

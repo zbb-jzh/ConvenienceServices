@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>新闻发现页面</title>
+        <title>同城发现</title>
         <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
         <meta content="yes" name="apple-mobile-web-app-capable"/>
         <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
@@ -123,9 +123,9 @@
                 </a> -->
                 <div class="aui-center aui-navBar-search">
                     <!-- <span class="aui-center-title">发现</span> -->
-                    <input type="text" placeholder="请输入您想查找的">
+                    <input type="text" placeholder="请输入您想查找的" ms-duplex="content">
                 </div>
-                <a href="javascript:;" class="aui-navBar-item">
+                <a href="javascript:;" class="aui-navBar-item" ms-click="search('')">
                     <span class="aui-cancel">
                         <i class="">搜索</i>
                     </span>
@@ -142,7 +142,7 @@
                 <div class="aui-form-search b-line">
                     <div class="tab-nav-over">
                         <ul class="tab-nav">
-                            <li class="tab-nav-item " ms-class="tab-active:item.isSelected" ms-repeat-item="categoryList">
+                            <li class="tab-nav-item " ms-class="tab-active:item.isSelected" ms-repeat-item="categoryList" ms-click="search(item.id)">
                                 <a href="javascript:;">
                                     <span>{{item.name}}</span>
                                 </a>
@@ -574,11 +574,20 @@
                         str += '</div>';
                         str += '<div class="aui-flex">';
                         str += '<div class="aui-flex-user">';
-                        str += '<img src="' + newObj.userName +'" alt="">';
+                        str += '<img src="' + newObj.headUrl +'" alt="">';
                         str += '  </div>';
                         str += '<div class="aui-flex-box">';
-                        str += '<p>'+ newObj.headUrl +'</p>';
+                        str += '<span>'+ newObj.userName +'</span>';
                         str += '   </div>';
+                        str += '<div class="aui-flex-box">';
+                        str += '<button> <i class="icon icon-up"></i>781</button>';
+                        str += '<button> <i class="icon icon-do"></i>719</button>';
+                        str += '</div>';
+                        str += '<div class="aui-card-info aui-card-info-t">';
+                        str += '<span>';
+                        str += '<i class="icon icon-plu"></i>198</span>';
+                        str += '<span><i class="icon icon-zfa"></i></span>';
+                        str += '</div>';
                         str += '</div>';
                         str += '</a>';
 					

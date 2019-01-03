@@ -121,4 +121,28 @@ public abstract class BasePublish<M extends BasePublish<M>> extends Model<M> imp
 		return get("headUrl");
 	}
 
+	public void setBrowseNum(java.lang.Integer browseNum) {
+		set("browseNum", browseNum);
+	}
+
+	public java.lang.Integer getBrowseNum() {
+		return get("browseNum");
+	}
+
+	public void setPraiseNum(java.lang.Integer praiseNum) {
+		set("praiseNum", praiseNum);
+	}
+
+	public java.lang.Integer getPraiseNum() {
+		return get("praiseNum");
+	}
+
+	public void setNoPraiseNum(java.lang.Integer noPraiseNum) {
+		set("noPraiseNum", noPraiseNum);
+	}
+
+	public java.lang.Integer getNoPraiseNum() {
+		return get("noPraiseNum");
+	}
+
 }

@@ -1,12 +1,13 @@
 package com.future.link.convenience.service;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.net.URLDecoder;
 import com.future.link.base.service.ImageManagerService;
 import com.future.link.common.Result;
 import com.future.link.convenience.model.Publish;
-import com.future.link.system.model.Advertising;
 import com.future.link.utils.Constant;
 import com.future.link.utils.ToolDateTime;
 import com.jfinal.aop.Enhancer;
@@ -52,8 +53,9 @@ public class PublishService {
 	/**
      * 分页查询
      * @return
+	 * @throws UnsupportedEncodingException 
      */
-    public Page<Publish> page(int pageNumber, int pageSize, String content, String categoryId){
+    public Page<Publish> page(int pageNumber, int pageSize, String content, String categoryId) throws UnsupportedEncodingException{
 
         StringBuffer sql = new StringBuffer(" from convenience_publish where status = 1 ");
         List<Object> params = new ArrayList<>();
@@ -74,6 +76,7 @@ public class PublishService {
         List<Publish> list = page.getList();
         for(Publish publish : list)
         {
+        	publish.setUserName(URLDecoder.decode(URLDecoder.decode(publish.getUserName(), "utf-8"), "utf-8"));
         	this.completeShowUrl(publish);
         }
         

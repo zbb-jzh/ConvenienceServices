@@ -2,33 +2,34 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>民宿住宿-个人中心</title>
+        <title>个人中心</title>
         <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
         <meta content="yes" name="apple-mobile-web-app-capable"/>
         <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
         <meta content="telephone=no" name="format-detection"/>
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="../../frozen/css/frozen.css">
+        <link rel="stylesheet" href="../../demo.css">
+        <link rel="stylesheet" href="../../common/jQuery-ztree/demo.css">
+        <link rel="stylesheet" href="../../common/jQuery-ztree/zTreeStyle.css">
+        <script src="../../frozen/lib/zepto.min.js"></script>
+        <script src="../../frozen/js/frozen.js"></script>
+        <script src="../../jQuery/jQuery-2.2.0.min.js"></script>
+        <script src="../../avalon/avalon.js"></script>
+        <!-- <script type="text/javascript" src="../../common/jQuery-ztree/jquery.ztree.core.min.js" > </script>
+		<script type="text/javascript" src="../../common/jQuery-ztree/jquery.ztree.all.min.js" > </script> -->
+		<script type="text/javascript" src="../../common/tools.js" > </script>
+		
+        <script src="js/my.js"></script>
     </head>
-    <body>
-
-        <!--
-
-         * 17素材vip建站专区模块代码
-         * 详尽信息请看官网：http://www.17sucai.com/pins/vip
-         *
-         * Copyright , 温州易站网络科技有限公司版权所有
-         *
-         * 请尊重原创，未经允许请勿转载。
-         * 在保留版权的前提下可应用于个人或商业用途
-
-        -->
+    <body ms-controller="mycenter">
 
         <section class="aui-flexView">
             <header class="aui-navBar aui-navBar-fixed">
-                <a href="javascript:;" class="aui-navBar-item">
+                <!-- <a href="javascript:;" class="aui-navBar-item">
                     <i class="icon icon-set"></i>设置
                     <i class="icon icon-sign"></i>签到
-                </a>
+                </a> -->
                 <div class="aui-center">
                     <span class="aui-center-title"></span>
                 </div>
@@ -37,11 +38,11 @@
                 <div class="aui-quarter-box">
                     <div class="aui-flex">
                         <div class="aui-flex-box">
-                            <h2>李嘉桦同学</h2>
-                            <h3>V普通会员</h3>
+                            <h2>{{wxuser.nickName}}</h2>
+                           <!--  <h3>V普通会员</h3> -->
                         </div>
                         <div class="aui-flex-img">
-                            <img src="images/user.png" alt="">
+                            <img ms-attr-src="{{wxuser.headimgUrl}}" alt="">
                         </div>
                     </div>
                 </div>
