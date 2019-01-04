@@ -47,7 +47,9 @@ public class PublishService {
 	 * @return
 	 */
 	public Result getById(int id) {
-		return new Result(Constant.SUCCESS, Publish.dao.findById(id));
+		Publish publish = Publish.dao.findById(id);
+		this.completeShowUrl(publish);
+		return new Result(Constant.SUCCESS, publish);
 	}
 	
 	/**
